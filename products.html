@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Cozy Loop Studio LLC</title>
+    <meta name="description" content="Browse our complete collection of premium wool scarves at Cozy Loop Studio LLC. Find your perfect winter accessory.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+    <img src="logo/logo.webp" alt="Cozy Loop Studio LLC" style="height: 50px; width: auto;">
+</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="products" style="background: var(--bg-light); padding: 2rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <h1 class="section-title">Our Premium Collection</h1>
+            <p style="font-size: 1.1rem; color: var(--text-light); max-width: 800px; margin: 0 auto;">
+                Discover our complete range of handcrafted wool scarves, each carefully designed to provide warmth, comfort, and style for every occasion.
+            </p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="products">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search for scarves..." id="searchInput">
+                <button class="search-btn" onclick="searchProducts(document.getElementById('searchInput').value)">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <!-- Filter Options -->
+            <div class="button-group" style="justify-content: center; margin-bottom: 2rem;">
+                <button class="btn" onclick="filterProducts('all')">
+                    <i class="fas fa-th"></i> All Products
+                </button>
+                <button class="btn btn-secondary" onclick="filterProducts('classic')">
+                    <i class="fas fa-star"></i> Classic
+                </button>
+                <button class="btn btn-secondary" onclick="filterProducts('luxury')">
+                    <i class="fas fa-crown"></i> Luxury
+                </button>
+                <button class="btn btn-secondary" onclick="filterProducts('lightweight')">
+                    <i class="fas fa-feather"></i> Lightweight
+                </button>
+                <button class="btn btn-secondary" onclick="sortProducts('price')">
+                    <i class="fas fa-sort-amount-down"></i> Sort by Price
+                </button>
+                <button class="btn btn-secondary" onclick="sortProducts('name')">
+                    <i class="fas fa-sort-alpha-down"></i> Sort by Name
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products">
+        <div class="product-grid" id="products-container">
+            <!-- Products will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Load More -->
+    <section class="products" style="background: var(--bg-light);">
+        <div style="text-align: center;">
+            <button class="btn btn-secondary" onclick="loadMoreProducts()" id="loadMoreBtn" style="display: none;">
+                Load More Products
+            </button>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="products">
+        <div style="max-width: 600px; margin: 0 auto; padding: 0 2rem; text-align: center; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 10px; padding: 3rem;">
+            <h2 style="margin-bottom: 1rem;">Stay Cozy & Connected</h2>
+            <p style="margin-bottom: 2rem;">Subscribe to our newsletter for exclusive offers, new arrivals, and styling tips!</p>
+            <form onsubmit="subscribeNewsletter(event)" style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto;">
+                <input type="email" placeholder="Enter your email" required style="flex: 1; padding: 12px; border: none; border-radius: 5px;">
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cozy Loop Studio LLC</h3>
+                <p>Your premier destination for premium wool scarves and cozy accessories. Handcrafted quality meets timeless style.</p>
+                <p><strong>Email:</strong> contact@cozyloopstudio.com</p>
+                <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+            </div>
+            <div class="footer-section">
+                <h3>INFORMATION CENTRE</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter Subscribe</h3>
+                <p>Subscribe to our newsletter for exclusive offers and new product updates!</p>
+                <form onsubmit="subscribeNewsletter(event)" style="margin-top: 1rem;">
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; border-radius: 5px; margin-bottom: 1rem;">
+                    <button type="submit" class="btn" style="width: 100%; background: var(--accent-color); border: none;">
+                        <i class="fas fa-envelope"></i> Subscribe
+                    </button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cozy Loop Studio LLC. All rights reserved. | Website: cozyloopstudio.com</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentProducts = [...products];
+        let displayedProducts = 9;
+        let currentFilter = 'all';
+        let currentSort = null;
+
+        // Initialize products page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProductsPage();
+        });
+
+        function renderProductsPage() {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+
+            const productsToShow = currentProducts.slice(0, displayedProducts);
+            
+            if (productsToShow.length === 0) {
+                container.innerHTML = '<p class="no-products">No products found matching your criteria.</p>';
+                return;
+            }
+
+            container.innerHTML = productsToShow.map(product => `
+                <div class="product-card fade-in" onclick="viewProduct('${product.id}')">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="btn" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Show/hide load more button
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = currentProducts.length > displayedProducts ? 'inline-block' : 'none';
+            }
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            displayedProducts = 9; // Reset display count
+            
+            if (category === 'all') {
+                currentProducts = [...products];
+            } else if (category === 'classic') {
+                currentProducts = products.filter(p => 
+                    p.name.toLowerCase().includes('classic') || 
+                    p.name.toLowerCase().includes('wool') ||
+                    p.name.toLowerCase().includes('striped')
+                );
+            } else if (category === 'luxury') {
+                currentProducts = products.filter(p => 
+                    p.name.toLowerCase().includes('luxury') || 
+                    p.name.toLowerCase().includes('cashmere') ||
+                    p.price > 40
+                );
+            } else if (category === 'lightweight') {
+                currentProducts = products.filter(p => 
+                    p.name.toLowerCase().includes('lightweight') || 
+                    p.name.toLowerCase().includes('spring')
+                );
+            }
+            
+            renderProductsPage();
+        }
+
+        function sortProducts(sortBy) {
+            currentSort = sortBy;
+            
+            if (sortBy === 'price') {
+                currentProducts.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'name') {
+                currentProducts.sort((a, b) => a.name.localeCompare(b.name));
+            }
+            
+            renderProductsPage();
+        }
+
+        function loadMoreProducts() {
+            displayedProducts += 6;
+            renderProductsPage();
+        }
+
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Simulate newsletter subscription
+            cart.showToast('Thank you for subscribing! Check your email for a welcome discount.', 'success');
+            event.target.reset();
+        }
+
+        // Override search function for products page
+        function searchProducts(query) {
+            if (!query.trim()) {
+                currentProducts = [...products];
+            } else {
+                currentProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(query.toLowerCase()) ||
+                    product.description.toLowerCase().includes(query.toLowerCase())
+                );
+            }
+            
+            displayedProducts = 9; // Reset display count
+            renderProductsPage();
+        }
+
+        // Add keyboard support for search
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchProducts(e.target.value);
+                });
+                
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        searchProducts(e.target.value);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

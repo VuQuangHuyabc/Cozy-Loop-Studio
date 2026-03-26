@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Cozy Loop Studio LLC</title>
+    <meta name="description" content="Contact Cozy Loop Studio LLC - Get in touch for questions about our premium wool scarves and customer service.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+    <img src="logo/logo.webp" alt="Cozy Loop Studio LLC" style="height: 50px; width: auto;">
+</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get in Touch</h1>
+            <p>We're here to help you find the perfect scarf and answer any questions you may have</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="products">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 style="color: var(--primary-color); margin-bottom: 2rem; text-align: center;">Contact Information</h2>
+                
+                <div class="contact-item">
+                    <h3><i class="fas fa-store"></i> Cozy Loop Studio LLC</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">Your premier destination for premium wool scarves and cozy accessories. We're dedicated to providing exceptional quality and service to our valued customers.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p><a href="mailto:contact@cozyloopstudio.com" style="color: var(--secondary-color);">contact@cozyloopstudio.com</a></p>
+                    <p style="color: var(--text-light);">We typically respond within 24 hours during business days.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                    <p style="color: var(--text-light);"><strong>Monday - Friday:</strong> 9:00 AM - 5:00 PM (MST)</p>
+                    <p style="color: var(--text-light);"><strong>Saturday - Sunday:</strong> Closed</p>
+                    <p style="color: var(--text-light);">We observe major holidays. Check our social media for holiday hours.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                    <p style="color: var(--text-light);">
+                        1012 Marquez Place Ste. 106-B<br>
+                        Santa Fe, NM 87505<br>
+                        United States
+                    </p>
+                    <p style="color: var(--text-light); margin-top: 0.5rem;">While we don't have a retail storefront at this location, we'd be happy to arrange a viewing by appointment.</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3><i class="fas fa-phone"></i> Phone</h3>
+                    <p style="color: var(--text-light);">For fastest response, please email us at contact@cozyloopstudio.com</p>
+                    <p style="color: var(--text-light);">Phone support available by appointment only.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="products" style="background: var(--bg-light);">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2 style="color: var(--primary-color); margin-bottom: 2rem; text-align: center;">Send Us a Message</h2>
+                
+                <form class="contact-form" onsubmit="submitContactForm(event)">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(Optional)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem;">
+                            <option value="">Select a subject</option>
+                            <option value="product-question">Product Question</option>
+                            <option value="order-status">Order Status</option>
+                            <option value="return-exchange">Return/Exchange</option>
+                            <option value="wholesale">Wholesale Inquiry</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Please tell us how we can help you..."></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="products">
+        <div class="contact-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">How long does shipping take?</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">We typically prepare orders within 1 day, and delivery takes 2-3 business days. You'll receive a tracking number once your order ships.</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">What is your return policy?</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">We offer a 30-day return policy for unused items in original packaging. Please see our Returns & Refunds page for detailed information.</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Do you offer wholesale pricing?</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">Yes! We offer wholesale pricing for bulk orders. Please contact us with your business information and estimated order quantities.</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">How do I care for my wool scarf?</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">We recommend hand washing in cold water with mild detergent, then laying flat to dry. Avoid machine washing and high heat to maintain the quality of your scarf.</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Do you ship internationally?</h3>
+                    <p style="color: var(--text-light); line-height: 1.6;">Currently we ship within the United States. For international inquiries, please contact us directly and we'll do our best to accommodate your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="products" style="background: var(--bg-light);">
+        <div class="contact-container">
+            <h2 class="section-title">Find Us in Santa Fe</h2>
+            <div style="background: var(--primary-color); height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 2rem;">
+                <div style="text-align: center;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Visit Our Studio</h3>
+                    <p>1012 Marquez Place Ste. 106-B<br>Santa Fe, NM 87505</p>
+                    <p style="margin-top: 1rem;">Appointments available Monday-Friday 9AM-5PM</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-light);">
+                Located in the beautiful city of Santa Fe, New Mexico, our studio draws inspiration from the rich cultural heritage and artistic spirit of the Southwest.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cozy Loop Studio LLC</h3>
+                <p>Your premier destination for premium wool scarves and cozy accessories. Handcrafted quality meets timeless style.</p>
+                <p><strong>Email:</strong> contact@cozyloopstudio.com</p>
+                <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+            </div>
+            <div class="footer-section">
+                <h3>INFORMATION CENTRE</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter Subscribe</h3>
+                <p>Subscribe to our newsletter for exclusive offers and new product updates!</p>
+                <form onsubmit="subscribeNewsletter(event)" style="margin-top: 1rem;">
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; border-radius: 5px; margin-bottom: 1rem;">
+                    <button type="submit" class="btn" style="width: 100%; background: var(--accent-color); border: none;">
+                        <i class="fas fa-envelope"></i> Subscribe
+                    </button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cozy Loop Studio LLC. All rights reserved. | Website: cozyloopstudio.com</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced contact form validation
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
+                cart.showToast('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            if (!validateEmail(data.email)) {
+                cart.showToast('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            cart.showToast('Thank you for your message! We will respond within 24 hours.', 'success');
+            
+            // Log the form data (in a real application, this would be sent to a server)
+            console.log('Contact form submission:', data);
+            
+            // Reset form
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

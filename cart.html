@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Cozy Loop Studio LLC</title>
+    <meta name="description" content="Review your shopping cart and complete your purchase of premium wool scarves from Cozy Loop Studio LLC.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+    <img src="logo/logo.webp" alt="Cozy Loop Studio LLC" style="height: 50px; width: auto;">
+</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="products" style="background: var(--bg-light); padding: 2rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
+            <h1 class="section-title">Shopping Cart</h1>
+            <p style="font-size: 1.1rem; color: var(--text-light);">Review your selected items and proceed to checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="products">
+        <div class="cart-container">
+            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 2rem;">
+                <!-- Cart Items -->
+                <div>
+                    <div class="cart-items" id="cart-items-container">
+                        <!-- Cart items will be loaded by JavaScript -->
+                    </div>
+                    
+                    <!-- Continue Shopping -->
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <div class="button-group" style="justify-content: center;">
+                            <a href="products.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Continue Shopping
+                            </a>
+                            <a href="index.html" class="btn">
+                                <i class="fas fa-home"></i> Back to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Summary -->
+                <div>
+                    <div class="cart-summary" id="cart-summary">
+                        <!-- Cart summary will be loaded by JavaScript -->
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div style="background: var(--bg-light); padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; text-align: center;">Why Shop With Us?</h3>
+                        <div style="text-align: center;">
+                            <div style="margin-bottom: 1rem;">
+                                <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--accent-color);"></i>
+                                <p style="margin-top: 0.5rem; color: var(--text-light); font-size: 0.9rem;">Secure Payment</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <i class="fas fa-truck" style="font-size: 2rem; color: var(--accent-color);"></i>
+                                <p style="margin-top: 0.5rem; color: var(--text-light); font-size: 0.9rem;">Fast Shipping</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <i class="fas fa-undo" style="font-size: 2rem; color: var(--accent-color);"></i>
+                                <p style="margin-top: 0.5rem; color: var(--text-light); font-size: 0.9rem;">30-Day Returns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="products" style="background: var(--bg-light);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="section-title">You Might Also Like</h2>
+            <div class="product-grid" id="related-products">
+                <!-- Related products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cozy Loop Studio LLC</h3>
+                <p>Your premier destination for premium wool scarves and cozy accessories. Handcrafted quality meets timeless style.</p>
+                <p><strong>Email:</strong> contact@cozyloopstudio.com</p>
+                <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+            </div>
+            <div class="footer-section">
+                <h3>INFORMATION CENTRE</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter Subscribe</h3>
+                <p>Subscribe to our newsletter for exclusive offers and new product updates!</p>
+                <form onsubmit="subscribeNewsletter(event)" style="margin-top: 1rem;">
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; border-radius: 5px; margin-bottom: 1rem;">
+                    <button type="submit" class="btn" style="width: 100%; background: var(--accent-color); border: none;">
+                        <i class="fas fa-envelope"></i> Subscribe
+                    </button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cozy Loop Studio LLC. All rights reserved. | Website: cozyloopstudio.com</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartPage();
+            loadRelatedProducts();
+        });
+
+        function updateCartPage() {
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const cartSummary = document.getElementById('cart-summary');
+            
+            if (!cartItemsContainer || !cartSummary) return;
+
+            if (cart.items.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Your cart is empty</h3>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">Looks like you haven't added any items to your cart yet.</p>
+                        <a href="products.html" class="btn">Start Shopping</a>
+                    </div>
+                `;
+                cartSummary.innerHTML = `
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>$0.00</span>
+                    </div>
+                `;
+                return;
+            }
+
+            // Render cart items
+            cartItemsContainer.innerHTML = cart.items.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-variant" style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            ${item.variantName ? `Style: ${item.variantName}` : ''}
+                        </div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="updateCartItemQuantity('${item.uniqueId || item.id}', ${item.quantity - 1})">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateCartItemQuantity('${item.uniqueId || item.id}', ${item.quantity + 1})">+</button>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
+                            $${(item.price * item.quantity).toFixed(2)}
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart('${item.uniqueId || item.id}')">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render cart summary
+            const subtotal = cart.getTotalPrice();
+            const shipping = subtotal > 0 ? 5.99 : 0;
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + shipping + tax;
+
+            cartSummary.innerHTML = `
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span>$${shipping.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax:</span>
+                    <span>$${tax.toFixed(2)}</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span>$${total.toFixed(2)}</span>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="proceedToCheckout()">
+                    Proceed to Checkout
+                </button>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <small style="color: var(--text-light);">
+                        <i class="fas fa-lock"></i> Secure checkout powered by industry standards
+                    </small>
+                </div>
+            `;
+        }
+
+        function updateCartItemQuantity(productId, newQuantity) {
+            if (newQuantity <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            if (newQuantity > 10) {
+                cart.showToast('Maximum quantity is 10 items per product', 'error');
+                return;
+            }
+            
+            // Find item by uniqueId or regular id
+            const item = cart.items.find(item => 
+                (item.uniqueId && item.uniqueId === productId) || 
+                (!item.uniqueId && item.id === productId)
+            );
+            
+            if (item) {
+                item.quantity = newQuantity;
+                cart.saveCart();
+                updateCartPage();
+            }
+        }
+
+        function removeFromCart(productId) {
+            if (confirm('Are you sure you want to remove this item from your cart?')) {
+                // Remove item by uniqueId or regular id
+                cart.items = cart.items.filter(item => 
+                    !((item.uniqueId && item.uniqueId === productId) || 
+                      (!item.uniqueId && item.id === productId))
+                );
+                cart.saveCart();
+                updateCartPage();
+                loadRelatedProducts();
+            }
+        }
+
+        function proceedToCheckout() {
+            if (cart.items.length === 0) {
+                cart.showToast('Your cart is empty', 'error');
+                return;
+            }
+            
+            // In a real application, this would redirect to a checkout page
+            cart.showToast('Redirecting to secure checkout...', 'success');
+            
+            setTimeout(() => {
+                alert('Checkout functionality would be implemented here with payment processing.\n\nThis is a demo website. In a real implementation, you would:\n1. Enter shipping information\n2. Select payment method\n3. Review order\n4. Complete secure payment\n5. Receive order confirmation');
+            }, 1000);
+        }
+
+        function loadRelatedProducts() {
+            const relatedContainer = document.getElementById('related-products');
+            if (!relatedContainer) return;
+
+            // Show products not in cart
+            const cartProductIds = cart.items.map(item => item.id);
+            const relatedProducts = products.filter(p => !cartProductIds.includes(p.id)).slice(0, 4);
+
+            if (relatedProducts.length === 0) {
+                relatedContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">No additional products available</p>';
+                return;
+            }
+
+            relatedContainer.innerHTML = relatedProducts.map(product => `
+                <div class="product-card fade-in" onclick="viewProduct('${product.id}')">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="btn" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Override cart functions to update cart page
+        const originalAddItem = cart.addItem;
+        cart.addItem = function(product) {
+            originalAddItem.call(this, product);
+            updateCartPage();
+            loadRelatedProducts();
+        };
+
+        const originalRemoveItem = cart.removeItem;
+        cart.removeItem = function(productId) {
+            originalRemoveItem.call(this, productId);
+            updateCartPage();
+            loadRelatedProducts();
+        };
+
+        const originalUpdateQuantity = cart.updateQuantity;
+        cart.updateQuantity = function(productId, quantity) {
+            originalUpdateQuantity.call(this, productId, quantity);
+            updateCartPage();
+        };
+    </script>
+</body>
+</html>

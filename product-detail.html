@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Cozy Loop Studio LLC</title>
+    <meta name="description" content="View detailed information about our premium wool scarves at Cozy Loop Studio LLC.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Product Detail Specific Styles */
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-images {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .feature-item i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: var(--bg-light);
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .quantity-input {
+            border: none;
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.5s both;
+        }
+
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-large::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-large:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .product-tabs {
+            margin-top: 3rem;
+            animation: fadeInUp 0.6s ease 0.6s both;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .related-products {
+            margin-top: 4rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* Variant Selector Styles */
+        .variant-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .variant-option {
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+        }
+
+        .variant-option:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .variant-option.selected {
+            border-color: var(--secondary-color);
+            background: rgba(231, 76, 60, 0.05);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        }
+
+        .variant-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .variant-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .variant-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .variant-option.selected .variant-color {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .variant-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+    <img src="logo/logo.webp" alt="Cozy Loop Studio LLC" style="height: 50px; width: auto;">
+</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="products" style="background: var(--bg-light); padding: 1rem 0;">
+        <div class="product-detail-container">
+            <nav style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-light);">
+                <a href="index.html" style="color: var(--text-light); text-decoration: none;">Home</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                <a href="products.html" style="color: var(--text-light); text-decoration: none;">Products</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                <span id="breadcrumb-product" style="color: var(--primary-color);">Product Detail</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="products">
+        <div class="product-detail-container">
+            <div class="product-detail">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <img id="main-product-image" src="" alt="" class="main-image">
+                    <div class="image-gallery" id="image-gallery">
+                        <!-- Thumbnails will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info">
+                    <h1 id="product-name" class="product-title">Product Name</h1>
+                    <div id="product-price" class="product-price">$0.00</div>
+                    <p id="product-description" class="product-description">Product description will be loaded here.</p>
+                    
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Premium Quality Wool</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Handcrafted with Care</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>30-Day Return Policy</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fast Shipping (2-3 days)</span>
+                        </div>
+                    </div>
+
+                    <!-- Variant Selection -->
+                    <div class="variant-selector" style="margin-bottom: 2rem;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Choose Your Style:</h3>
+                        <div class="variant-options" id="variant-options">
+                            <!-- Variants will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <label for="quantity" style="font-weight: bold; color: var(--primary-color);">Quantity:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity()">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="increaseQuantity()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-large pulse-animation" onclick="addToCartFromDetail()">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-secondary btn-large" onclick="buyNow()">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('description')">Description</button>
+                    <button class="tab-btn" onclick="showTab('details')">Details</button>
+                    <button class="tab-btn" onclick="showTab('shipping')">Shipping</button>
+                    <button class="tab-btn" onclick="showTab('reviews')">Reviews</button>
+                </div>
+
+                <div id="description-tab" class="tab-content active">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Product Description</h3>
+                    <p id="detailed-description" style="line-height: 1.8; color: var(--text-light);">
+                        Experience the ultimate comfort and style with our premium wool scarf. Each piece is carefully crafted to provide warmth and elegance for any occasion.
+                    </p>
+                    <p style="line-height: 1.8; color: var(--text-light); margin-top: 1rem;">
+                        Made from the finest quality wool, this scarf offers exceptional softness and durability. The timeless design ensures it will complement any outfit, making it a versatile addition to your wardrobe.
+                    </p>
+                </div>
+
+                <div id="details-tab" class="tab-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Product Details</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem; font-weight: bold; color: var(--primary-color);">Material</td>
+                            <td style="padding: 1rem; color: var(--text-light);">100% Premium Wool</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem; font-weight: bold; color: var(--primary-color);">Dimensions</td>
+                            <td style="padding: 1rem; color: var(--text-light);">70" x 12" (178cm x 30cm)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem; font-weight: bold; color: var(--primary-color);">Care Instructions</td>
+                            <td style="padding: 1rem; color: var(--text-light);">Hand wash cold, lay flat to dry</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem; font-weight: bold; color: var(--primary-color);">Origin</td>
+                            <td style="padding: 1rem; color: var(--text-light);">Handcrafted in Santa Fe, NM</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="shipping-tab" class="tab-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Shipping Information</h3>
+                    <div style="background: var(--bg-light); padding: 2rem; border-radius: 10px;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Standard Shipping</h4>
+                            <p style="color: var(--text-light);">2-3 business days after processing</p>
+                            <p style="color: var(--text-light);">$5.99 (Free on orders over $50)</p>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Express Shipping</h4>
+                            <p style="color: var(--text-light);">1-2 business days after processing</p>
+                            <p style="color: var(--text-light);">$15.99</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Processing Time</h4>
+                            <p style="color: var(--text-light);">Orders are processed within 1 business day</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reviews-tab" class="tab-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Customer Reviews</h3>
+                    <div style="text-align: center; padding: 3rem; background: var(--bg-light); border-radius: 10px;">
+                        <i class="fas fa-star" style="color: var(--accent-color); font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">Be the first to review!</h4>
+                        <p style="color: var(--text-light); margin-bottom: 2rem;">Share your experience with this product</p>
+                        <button class="btn btn-secondary">Write a Review</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2 class="section-title">You Might Also Like</h2>
+                <div class="related-grid" id="related-products-grid">
+                    <!-- Related products will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cozy Loop Studio LLC</h3>
+                <p>Your premier destination for premium wool scarves and cozy accessories. Handcrafted quality meets timeless style.</p>
+                <p><strong>Email:</strong> contact@cozyloopstudio.com</p>
+                <p><strong>Address:</strong> 1012 Marquez Place Ste. 106-B Santa Fe, NM 87505</p>
+            </div>
+            <div class="footer-section">
+                <h3>INFORMATION CENTRE</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
+                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter Subscribe</h3>
+                <p>Subscribe to our newsletter for exclusive offers and new product updates!</p>
+                <form onsubmit="subscribeNewsletter(event)" style="margin-top: 1rem;">
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; border-radius: 5px; margin-bottom: 1rem;">
+                    <button type="submit" class="btn" style="width: 100%; background: var(--accent-color); border: none;">
+                        <i class="fas fa-envelope"></i> Subscribe
+                    </button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Cozy Loop Studio LLC. All rights reserved. | Website: cozyloopstudio.com</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let currentProduct = null;
+        let currentQuantity = 1;
+        let selectedVariant = null;
+
+        // Load product data from sessionStorage or URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductDetail();
+            loadRelatedProducts();
+        });
+
+        function loadProductDetail() {
+            // Get product from sessionStorage or URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || sessionStorage.getItem('selectedProduct');
+            
+            if (productId) {
+                // If it's from sessionStorage, parse it
+                if (productId.startsWith('{')) {
+                    currentProduct = JSON.parse(productId);
+                } else {
+                    // Find product by ID
+                    currentProduct = products.find(p => p.id === productId);
+                }
+            }
+            
+            if (!currentProduct) {
+                // Fallback to first product
+                currentProduct = products[0];
+            }
+            
+            // Set default variant to first variant
+            if (currentProduct.variants && currentProduct.variants.length > 0) {
+                selectedVariant = currentProduct.variants[0];
+            }
+            
+            displayProductDetail();
+            loadProductImages();
+            loadVariants();
+        }
+
+        function loadVariants() {
+            const variantContainer = document.getElementById('variant-options');
+            if (!variantContainer || !currentProduct.variants) return;
+            
+            variantContainer.innerHTML = currentProduct.variants.map((variant, index) => `
+                <div class="variant-option ${index === 0 ? 'selected' : ''}" 
+                     onclick="selectVariant('${variant.id}')"
+                     data-variant-id="${variant.id}">
+                    <div class="variant-color" style="background-color: ${variant.color};"></div>
+                    <div class="variant-name">${variant.name}</div>
+                    <div class="variant-price">$${variant.price.toFixed(2)}</div>
+                </div>
+            `).join('');
+        }
+
+        function selectVariant(variantId) {
+            // Find the variant
+            const variant = currentProduct.variants.find(v => v.id === variantId);
+            if (!variant) return;
+            
+            // Update selected variant
+            selectedVariant = variant;
+            
+            // Update UI
+            document.querySelectorAll('.variant-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            const selectedOption = document.querySelector(`[data-variant-id="${variantId}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+            }
+            
+            // Update price
+            document.getElementById('product-price').textContent = `$${variant.price.toFixed(2)}`;
+            
+            // Update main image
+            const mainImage = document.getElementById('main-product-image');
+            const imageFolder = currentProduct.imagePrefix === 'variant-image' ? 'variant_images' : 'main_images';
+            mainImage.src = `${currentProduct.folder}/${imageFolder}/${variant.image}`;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+                if (thumb.src.includes(variant.image)) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+
+        function displayProductDetail() {
+            document.getElementById('product-name').textContent = currentProduct.name;
+            
+            // Use selected variant price or default price
+            const price = selectedVariant ? selectedVariant.price : currentProduct.price;
+            document.getElementById('product-price').textContent = `$${price.toFixed(2)}`;
+            
+            document.getElementById('product-description').textContent = currentProduct.description;
+            document.getElementById('breadcrumb-product').textContent = currentProduct.name;
+            document.getElementById('detailed-description').textContent = currentProduct.description + ' This exquisite piece showcases the perfect blend of traditional craftsmanship and modern design, making it an essential accessory for any fashion-conscious individual.';
+            
+            // Update page title
+            document.title = `${currentProduct.name} - Cozy Loop Studio LLC`;
+        }
+
+        function loadProductImages() {
+            const mainImage = document.getElementById('main-product-image');
+            const gallery = document.getElementById('image-gallery');
+            
+            // Set main image
+            mainImage.src = currentProduct.image;
+            mainImage.alt = currentProduct.name;
+            
+            // Load all images from the product folder
+            const folder = currentProduct.folder;
+            const imageCount = currentProduct.imageCount;
+            const imagePrefix = currentProduct.imagePrefix || 'main-image';
+            const imageFolder = imagePrefix === 'variant-image' ? 'variant_images' : 'main_images';
+            
+            let galleryHTML = '';
+            for (let i = 1; i <= imageCount; i++) {
+                const imagePath = `${folder}/${imageFolder}/${imagePrefix}-${i}.jpeg`;
+                galleryHTML += `
+                    <img src="${imagePath}" 
+                         alt="${currentProduct.name} - Image ${i}" 
+                         class="thumbnail ${i === 1 ? 'active' : ''}"
+                         onclick="changeMainImage('${imagePath}', this)">
+                `;
+            }
+            
+            gallery.innerHTML = galleryHTML;
+        }
+
+        function getImageCount(folder) {
+            // Return the number of images in each folder based on your structure
+            const folderCounts = {
+                'Sản phẩm 1': 11,
+                'Sản phẩm 2': 15,
+                'Sản phẩm 3': 17,
+                'Sản phẩm 4': 12,
+                'Sản phẩm 5': 13,
+                'Sản phẩm 6': 14,
+                'Sản phẩm 7': 15,
+                'Sản phẩm 8': 16,
+                'Sản phẩm 9': 18
+            };
+            return folderCounts[folder] || 11;
+        }
+
+        function changeMainImage(imageSrc, thumbnail) {
+            const mainImage = document.getElementById('main-product-image');
+            
+            // Add fade effect
+            mainImage.style.opacity = '0';
+            setTimeout(() => {
+                mainImage.src = imageSrc;
+                mainImage.style.opacity = '1';
+            }, 200);
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+
+        function increaseQuantity() {
+            const input = document.getElementById('quantity');
+            if (input.value < 10) {
+                input.value = parseInt(input.value) + 1;
+                currentQuantity = parseInt(input.value);
+            }
+        }
+
+        function decreaseQuantity() {
+            const input = document.getElementById('quantity');
+            if (input.value > 1) {
+                input.value = parseInt(input.value) - 1;
+                currentQuantity = parseInt(input.value);
+            }
+        }
+
+        function addToCartFromDetail() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // Check if variant is selected
+            if (!selectedVariant) {
+                alert('Please select a variant before adding to cart.');
+                return;
+            }
+            
+            // Create product with variant info
+            const productWithVariant = {
+                ...currentProduct,
+                selectedVariant: selectedVariant,
+                variantName: selectedVariant.name,
+                variantId: selectedVariant.id,
+                price: selectedVariant.price,
+                image: `${currentProduct.folder}/${currentProduct.imagePrefix === 'variant-image' ? 'variant_images' : 'main_images'}/${selectedVariant.image}`,
+                uniqueId: `${currentProduct.id}-${selectedVariant.id}`
+            };
+            
+            // Add multiple items to cart
+            for (let i = 0; i < quantity; i++) {
+                cart.addItem(productWithVariant);
+            }
+            
+            // Show success message
+            cart.showToast(`${quantity} ${currentProduct.name} (${selectedVariant.name}) added to cart!`, 'success');
+            
+            // Reset quantity
+            document.getElementById('quantity').value = 1;
+            currentQuantity = 1;
+        }
+
+        function buyNow() {
+            // Add to cart and redirect to checkout
+            addToCartFromDetail();
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 1000);
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function loadRelatedProducts() {
+            const relatedGrid = document.getElementById('related-products-grid');
+            const relatedProducts = products.filter(p => p.id !== currentProduct.id).slice(0, 4);
+            
+            relatedGrid.innerHTML = relatedProducts.map(product => `
+                <div class="product-card fade-in" onclick="viewProduct('${product.id}')">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="btn" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Quantity input validation
+        document.getElementById('quantity').addEventListener('input', function() {
+            let value = parseInt(this.value);
+            if (isNaN(value) || value < 1) {
+                this.value = 1;
+            } else if (value > 10) {
+                this.value = 10;
+            }
+            currentQuantity = this.value;
+        });
+    </script>
+</body>
+</html>
